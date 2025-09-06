@@ -122,22 +122,17 @@ class HomeViewModel @Inject constructor(
     }
 
     fun selectChat(chatRoomIdx: Int) {
-        if (chatRoomIdx < 0 || chatRoomIdx > _chatListState.value.chats.size) return
+        if (chatRoomIdx < 0 || chatRoomIdx >= _chatListState.value.chats.size) return
 
-        _chatListState.update {
-            it.copy(
-                selected = it.selected.mapIndexed { index, b ->
-                    if (index == chatRoomIdx) {
-                        !b
-                    } else {
-                        b
-                    }
-                }
+        _chatListState.update { currentState ->
+            val newSelected = currentState.selected.mapIndexed { index, b ->
+                if (index == chatRoomIdx) !b else b
+            }
+
+            currentState.copy(
+                selected = newSelected,
+                isSelectionMode = newSelected.any { it }
             )
-        }
-
-        if (_chatListState.value.selected.count { it } == 0) {
-            disableSelectionMode()
         }
     }
 }
