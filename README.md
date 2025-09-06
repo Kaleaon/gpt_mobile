@@ -90,6 +90,10 @@ To build the app from source, you need to have Android Studio installed.
    keyPassword=<your_key_password>
    storeFile=keystore/keystore.jks
    ```
+   * `storePassword`: The password for the keystore.
+   * `keyAlias`: The alias for the key.
+   * `keyPassword`: The password for the key.
+   * `storeFile`: The path to the keystore file. You will need to generate this file.
 4. Build the project.
 
 
