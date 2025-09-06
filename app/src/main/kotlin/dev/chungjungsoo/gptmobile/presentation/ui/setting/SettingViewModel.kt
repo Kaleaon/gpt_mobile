@@ -66,6 +66,9 @@ class SettingViewModel @Inject constructor(
                     }
                 }
             }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
+            }
         }
     }
 
@@ -82,6 +85,9 @@ class SettingViewModel @Inject constructor(
                     }
                 }
             }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
+            }
         }
     }
 
@@ -97,6 +103,9 @@ class SettingViewModel @Inject constructor(
                         p
                     }
                 }
+            }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
             }
         }
     }
@@ -118,6 +127,9 @@ class SettingViewModel @Inject constructor(
                     }
                 }
             }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
+            }
         }
     }
 
@@ -135,6 +147,9 @@ class SettingViewModel @Inject constructor(
                     }
                 }
             }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
+            }
         }
     }
 
@@ -150,6 +165,9 @@ class SettingViewModel @Inject constructor(
                         p
                     }
                 }
+            }
+            viewModelScope.launch {
+                settingRepository.updatePlatforms(_platformState.value)
             }
         }
     }
