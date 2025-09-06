@@ -145,7 +145,7 @@ class ChatViewModel @Inject constructor(
     }
 
     fun editQuestion(q: Message) {
-        _messages.update { it.filter { message -> message.id < q.id && message.createdAt < q.createdAt } }
+        _messages.update { it.filter { message -> message.id < q.id } }
         _userMessage.update { it.copy(content = q.content, createdAt = currentTimeStamp) }
         completeChat()
     }
