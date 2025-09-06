@@ -27,6 +27,15 @@ import dev.chungjungsoo.gptmobile.presentation.common.PrimaryLongButton
 import dev.chungjungsoo.gptmobile.presentation.common.Route
 import dev.chungjungsoo.gptmobile.presentation.icons.Done
 
+/**
+ * A screen that is displayed when the setup is complete.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param currentRoute The current route.
+ * @param setupViewModel The view model for the setup flow.
+ * @param onNavigate The callback to be invoked when the next button is clicked.
+ * @param onBackAction The callback to be invoked when the back button is clicked.
+ */
 @Composable
 fun SetupCompleteScreen(
     modifier: Modifier = Modifier,
@@ -68,6 +77,11 @@ fun SetupCompleteScreen(
     }
 }
 
+/**
+ * A composable that displays the text for the setup complete screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 private fun SetupCompleteText(modifier: Modifier = Modifier) {
@@ -91,6 +105,11 @@ private fun SetupCompleteText(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * A composable that displays the logo for the setup complete screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 private fun SetupCompleteLogo(modifier: Modifier = Modifier) {

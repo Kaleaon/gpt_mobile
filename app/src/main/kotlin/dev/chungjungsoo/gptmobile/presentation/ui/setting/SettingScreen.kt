@@ -44,6 +44,15 @@ import dev.chungjungsoo.gptmobile.util.getPlatformSettingTitle
 import dev.chungjungsoo.gptmobile.util.getThemeModeTitle
 import dev.chungjungsoo.gptmobile.util.pinnedExitUntilCollapsedScrollBehavior
 
+/**
+ * A screen for displaying the settings of the application.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param settingViewModel The view model for the settings screen.
+ * @param onNavigationClick The callback to be invoked when the navigation icon is clicked.
+ * @param onNavigateToPlatformSetting The callback to be invoked when a platform setting is clicked.
+ * @param onNavigateToAboutPage The callback to be invoked when the about page is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(
@@ -124,6 +133,11 @@ private fun SettingTopBar(
     )
 }
 
+/**
+ * A setting item for the theme.
+ *
+ * @param onItemClick The callback to be invoked when the item is clicked.
+ */
 @Composable
 fun ThemeSetting(
     onItemClick: () -> Unit
@@ -137,6 +151,11 @@ fun ThemeSetting(
     )
 }
 
+/**
+ * A setting item for the about page.
+ *
+ * @param onItemClick The callback to be invoked when the item is clicked.
+ */
 @Composable
 fun AboutPageItem(
     onItemClick: () -> Unit
@@ -150,6 +169,11 @@ fun AboutPageItem(
     )
 }
 
+/**
+ * A dialog for setting the theme.
+ *
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun ThemeSettingDialog(
     settingViewModel: SettingViewModel = hiltViewModel()

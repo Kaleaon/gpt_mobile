@@ -13,21 +13,37 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * The view model for the settings screen.
+ *
+ * @property settingRepository The repository for settings-related operations.
+ */
 @HiltViewModel
 class SettingViewModel @Inject constructor(
     private val settingRepository: SettingRepository
 ) : ViewModel() {
 
     private val _platformState = MutableStateFlow(listOf<Platform>())
+    /**
+     * The state flow for the platform list.
+     */
     val platformState: StateFlow<List<Platform>> = _platformState.asStateFlow()
 
     private val _dialogState = MutableStateFlow(DialogState())
+    /**
+     * The state flow for the dialog state.
+     */
     val dialogState: StateFlow<DialogState> = _dialogState.asStateFlow()
 
     init {
         fetchPlatformStatus()
     }
 
+    /**
+     * Toggles the API for a platform.
+     *
+     * @param apiType The type of the API to toggle.
+     */
     fun toggleAPI(apiType: ApiType) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -47,12 +63,21 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Saves the platform settings.
+     */
     fun savePlatformSettings() {
         viewModelScope.launch {
             settingRepository.updatePlatforms(_platformState.value)
         }
     }
 
+    /**
+     * Updates the API URL for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param url The new URL.
+     */
     fun updateURL(apiType: ApiType, url: String) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -69,6 +94,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the API token for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param token The new token.
+     */
     fun updateToken(apiType: ApiType, token: String) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -85,6 +116,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the model for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param model The new model.
+     */
     fun updateModel(apiType: ApiType, model: String) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -101,6 +138,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the temperature for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param temperature The new temperature.
+     */
     fun updateTemperature(apiType: ApiType, temperature: Float) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
         val modifiedTemperature = when (apiType) {
@@ -121,6 +164,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the top-p value for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param topP The new top-p value.
+     */
     fun updateTopP(apiType: ApiType, topP: Float) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
         val modifiedTopP = topP.coerceIn(0.1F, 1F)
@@ -138,6 +187,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the system prompt for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param prompt The new system prompt.
+     */
     fun updateSystemPrompt(apiType: ApiType, prompt: String) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -154,32 +209,74 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Opens the theme dialog.
+     */
     fun openThemeDialog() = _dialogState.update { it.copy(isThemeDialogOpen = true) }
 
+    /**
+     * Opens the API URL dialog.
+     */
     fun openApiUrlDialog() = _dialogState.update { it.copy(isApiUrlDialogOpen = true) }
 
+    /**
+     * Opens the API token dialog.
+     */
     fun openApiTokenDialog() = _dialogState.update { it.copy(isApiTokenDialogOpen = true) }
 
+    /**
+     * Opens the API model dialog.
+     */
     fun openApiModelDialog() = _dialogState.update { it.copy(isApiModelDialogOpen = true) }
 
+    /**
+     * Opens the temperature dialog.
+     */
     fun openTemperatureDialog() = _dialogState.update { it.copy(isTemperatureDialogOpen = true) }
 
+    /**
+     * Opens the top-p dialog.
+     */
     fun openTopPDialog() = _dialogState.update { it.copy(isTopPDialogOpen = true) }
 
+    /**
+     * Opens the system prompt dialog.
+     */
     fun openSystemPromptDialog() = _dialogState.update { it.copy(isSystemPromptDialogOpen = true) }
 
+    /**
+     * Closes the theme dialog.
+     */
     fun closeThemeDialog() = _dialogState.update { it.copy(isThemeDialogOpen = false) }
 
+    /**
+     * Closes the API URL dialog.
+     */
     fun closeApiUrlDialog() = _dialogState.update { it.copy(isApiUrlDialogOpen = false) }
 
+    /**
+     * Closes the API token dialog.
+     */
     fun closeApiTokenDialog() = _dialogState.update { it.copy(isApiTokenDialogOpen = false) }
 
+    /**
+     * Closes the API model dialog.
+     */
     fun closeApiModelDialog() = _dialogState.update { it.copy(isApiModelDialogOpen = false) }
 
+    /**
+     * Closes the temperature dialog.
+     */
     fun closeTemperatureDialog() = _dialogState.update { it.copy(isTemperatureDialogOpen = false) }
 
+    /**
+     * Closes the top-p dialog.
+     */
     fun closeTopPDialog() = _dialogState.update { it.copy(isTopPDialogOpen = false) }
 
+    /**
+     * Closes the system prompt dialog.
+     */
     fun closeSystemPromptDialog() = _dialogState.update { it.copy(isSystemPromptDialogOpen = false) }
 
     private fun fetchPlatformStatus() {
@@ -189,6 +286,17 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    /**
+     * The state of the dialogs.
+     *
+     * @property isThemeDialogOpen Whether the theme dialog is open.
+     * @property isApiUrlDialogOpen Whether the API URL dialog is open.
+     * @property isApiTokenDialogOpen Whether the API token dialog is open.
+     * @property isApiModelDialogOpen Whether the API model dialog is open.
+     * @property isTemperatureDialogOpen Whether the temperature dialog is open.
+     * @property isTopPDialogOpen Whether the top-p dialog is open.
+     * @property isSystemPromptDialogOpen Whether the system prompt dialog is open.
+     */
     data class DialogState(
         val isThemeDialogOpen: Boolean = false,
         val isApiUrlDialogOpen: Boolean = false,

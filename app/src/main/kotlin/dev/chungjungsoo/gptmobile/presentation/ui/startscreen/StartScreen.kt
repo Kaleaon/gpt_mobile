@@ -25,6 +25,11 @@ import dev.chungjungsoo.gptmobile.R
 import dev.chungjungsoo.gptmobile.presentation.common.PrimaryLongButton
 import dev.chungjungsoo.gptmobile.presentation.icons.GptMobileStartScreen
 
+/**
+ * A screen that is displayed when the application is started for the first time.
+ *
+ * @param onStartClick The callback to be invoked when the start button is clicked.
+ */
 @Composable
 fun StartScreen(onStartClick: () -> Unit) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -46,6 +51,11 @@ fun StartScreen(onStartClick: () -> Unit) {
     }
 }
 
+/**
+ * A composable that displays the logo for the start screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 fun StartScreenLogo(modifier: Modifier = Modifier) {
@@ -59,6 +69,11 @@ fun StartScreenLogo(modifier: Modifier = Modifier) {
     )
 }
 
+/**
+ * A composable that displays the welcome text.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 fun WelcomeText(modifier: Modifier = Modifier) {

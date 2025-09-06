@@ -6,6 +6,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+/**
+ * Handles the states of an API call.
+ *
+ * @param messageFlow The flow for the message.
+ * @param onLoadingComplete The callback to be invoked when the loading is complete.
+ */
 suspend fun Flow<ApiState>.handleStates(
     messageFlow: MutableStateFlow<Message>,
     onLoadingComplete: () -> Unit

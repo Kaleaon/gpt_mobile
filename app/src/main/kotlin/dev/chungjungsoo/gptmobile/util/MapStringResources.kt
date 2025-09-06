@@ -8,6 +8,11 @@ import dev.chungjungsoo.gptmobile.data.model.ApiType
 import dev.chungjungsoo.gptmobile.data.model.DynamicTheme
 import dev.chungjungsoo.gptmobile.data.model.ThemeMode
 
+/**
+ * Returns a map of platform titles.
+ *
+ * @return A map of platform titles.
+ */
 @Composable
 fun getPlatformTitleResources(): Map<ApiType, String> = mapOf(
     ApiType.OPENAI to stringResource(R.string.openai),
@@ -17,6 +22,11 @@ fun getPlatformTitleResources(): Map<ApiType, String> = mapOf(
     ApiType.OLLAMA to stringResource(R.string.ollama)
 )
 
+/**
+ * Returns a map of platform descriptions.
+ *
+ * @return A map of platform descriptions.
+ */
 @Composable
 fun getPlatformDescriptionResources(): Map<ApiType, String> = mapOf(
     ApiType.OPENAI to stringResource(R.string.openai_description),
@@ -26,6 +36,11 @@ fun getPlatformDescriptionResources(): Map<ApiType, String> = mapOf(
     ApiType.OLLAMA to stringResource(R.string.ollama_description)
 )
 
+/**
+ * Returns a map of platform API labels.
+ *
+ * @return A map of platform API labels.
+ */
 @Composable
 fun getPlatformAPILabelResources(): Map<ApiType, String> = mapOf(
     ApiType.OPENAI to stringResource(R.string.openai_api_key),
@@ -35,6 +50,11 @@ fun getPlatformAPILabelResources(): Map<ApiType, String> = mapOf(
     ApiType.OLLAMA to stringResource(R.string.ollama_api_key)
 )
 
+/**
+ * Returns a map of platform help links.
+ *
+ * @return A map of platform help links.
+ */
 @Composable
 fun getPlatformHelpLinkResources(): Map<ApiType, String> = mapOf(
     ApiType.OPENAI to stringResource(R.string.openai_api_help),
@@ -44,6 +64,12 @@ fun getPlatformHelpLinkResources(): Map<ApiType, String> = mapOf(
     ApiType.OLLAMA to stringResource(R.string.ollama_api_help)
 )
 
+/**
+ * Generates a list of OpenAI models.
+ *
+ * @param models The set of models to generate the list from.
+ * @return A list of OpenAI models.
+ */
 @Composable
 fun generateOpenAIModelList(models: LinkedHashSet<String>) = models.mapIndexed { index, model ->
     val (name, description) = when (index) {
@@ -56,6 +82,12 @@ fun generateOpenAIModelList(models: LinkedHashSet<String>) = models.mapIndexed {
     APIModel(name, description, model)
 }
 
+/**
+ * Generates a list of Anthropic models.
+ *
+ * @param models The set of models to generate the list from.
+ * @return A list of Anthropic models.
+ */
 @Composable
 fun generateAnthropicModelList(models: LinkedHashSet<String>) = models.mapIndexed { index, model ->
     val (name, description) = when (index) {
@@ -68,6 +100,12 @@ fun generateAnthropicModelList(models: LinkedHashSet<String>) = models.mapIndexe
     APIModel(name, description, model)
 }
 
+/**
+ * Generates a list of Google models.
+ *
+ * @param models The set of models to generate the list from.
+ * @return A list of Google models.
+ */
 @Composable
 fun generateGoogleModelList(models: LinkedHashSet<String>) = models.mapIndexed { index, model ->
     val (name, description) = when (index) {
@@ -79,6 +117,12 @@ fun generateGoogleModelList(models: LinkedHashSet<String>) = models.mapIndexed {
     APIModel(name, description, model)
 }
 
+/**
+ * Generates a list of Groq models.
+ *
+ * @param models The set of models to generate the list from.
+ * @return A list of Groq models.
+ */
 @Composable
 fun generateGroqModelList(models: LinkedHashSet<String>) = models.mapIndexed { index, model ->
     val (name, description) = when (index) {
@@ -92,6 +136,12 @@ fun generateGroqModelList(models: LinkedHashSet<String>) = models.mapIndexed { i
     APIModel(name, description, model)
 }
 
+/**
+ * Returns the title for the API model selection screen.
+ *
+ * @param apiType The type of the API.
+ * @return The title for the API model selection screen.
+ */
 @Composable
 fun getAPIModelSelectTitle(apiType: ApiType) = when (apiType) {
     ApiType.OPENAI -> stringResource(R.string.select_openai_model)
@@ -101,6 +151,12 @@ fun getAPIModelSelectTitle(apiType: ApiType) = when (apiType) {
     ApiType.OLLAMA -> stringResource(R.string.select_ollama_model)
 }
 
+/**
+ * Returns the description for the API model selection screen.
+ *
+ * @param apiType The type of the API.
+ * @return The description for the API model selection screen.
+ */
 @Composable
 fun getAPIModelSelectDescription(apiType: ApiType) = when (apiType) {
     ApiType.OPENAI -> stringResource(R.string.select_openai_model_description)
@@ -110,12 +166,24 @@ fun getAPIModelSelectDescription(apiType: ApiType) = when (apiType) {
     ApiType.OLLAMA -> stringResource(id = R.string.select_ollama_model_description)
 }
 
+/**
+ * Returns the title for the dynamic theme.
+ *
+ * @param theme The dynamic theme.
+ * @return The title for the dynamic theme.
+ */
 @Composable
 fun getDynamicThemeTitle(theme: DynamicTheme) = when (theme) {
     DynamicTheme.ON -> stringResource(R.string.on)
     DynamicTheme.OFF -> stringResource(R.string.off)
 }
 
+/**
+ * Returns the title for the theme mode.
+ *
+ * @param theme The theme mode.
+ * @return The title for the theme mode.
+ */
 @Composable
 fun getThemeModeTitle(theme: ThemeMode) = when (theme) {
     ThemeMode.SYSTEM -> stringResource(R.string.system_default)
@@ -123,6 +191,12 @@ fun getThemeModeTitle(theme: ThemeMode) = when (theme) {
     ThemeMode.LIGHT -> stringResource(R.string.off)
 }
 
+/**
+ * Returns the title for the platform settings screen.
+ *
+ * @param apiType The type of the API.
+ * @return The title for the platform settings screen.
+ */
 @Composable
 fun getPlatformSettingTitle(apiType: ApiType) = when (apiType) {
     ApiType.OPENAI -> stringResource(R.string.openai_setting)
@@ -132,6 +206,12 @@ fun getPlatformSettingTitle(apiType: ApiType) = when (apiType) {
     ApiType.OLLAMA -> stringResource(R.string.ollama_setting)
 }
 
+/**
+ * Returns the description for the platform settings screen.
+ *
+ * @param apiType The type of the API.
+ * @return The description for the platform settings screen.
+ */
 @Composable
 fun getPlatformSettingDescription(apiType: ApiType) = when (apiType) {
     ApiType.OPENAI -> stringResource(R.string.platform_setting_description)
@@ -141,6 +221,12 @@ fun getPlatformSettingDescription(apiType: ApiType) = when (apiType) {
     ApiType.OLLAMA -> stringResource(R.string.platform_setting_description)
 }
 
+/**
+ * Returns the brand text for the platform API.
+ *
+ * @param apiType The type of the API.
+ * @return The brand text for the platform API.
+ */
 @Composable
 fun getPlatformAPIBrandText(apiType: ApiType) = when (apiType) {
     ApiType.OPENAI -> stringResource(R.string.openai_brand_text)

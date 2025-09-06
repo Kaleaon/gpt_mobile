@@ -13,10 +13,18 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * A view model for the theme settings.
+ *
+ * @property settingRepository The repository for the settings.
+ */
 @HiltViewModel
 class ThemeViewModel @Inject constructor(private val settingRepository: SettingRepository) : ViewModel() {
 
     private val _themeSetting = MutableStateFlow(ThemeSetting())
+    /**
+     * The theme setting state flow.
+     */
     val themeSetting = _themeSetting.asStateFlow()
 
     init {
@@ -29,6 +37,11 @@ class ThemeViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Updates the dynamic theme.
+     *
+     * @param theme The new dynamic theme.
+     */
     fun updateDynamicTheme(theme: DynamicTheme) {
         _themeSetting.update { setting ->
             setting.copy(dynamicTheme = theme)
@@ -38,6 +51,11 @@ class ThemeViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Updates the theme mode.
+     *
+     * @param theme The new theme mode.
+     */
     fun updateThemeMode(theme: ThemeMode) {
         _themeSetting.update { setting ->
             setting.copy(themeMode = theme)

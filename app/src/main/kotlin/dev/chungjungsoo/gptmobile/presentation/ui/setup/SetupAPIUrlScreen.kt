@@ -40,6 +40,15 @@ import dev.chungjungsoo.gptmobile.presentation.common.Route
 import dev.chungjungsoo.gptmobile.util.getPlatformHelpLinkResources
 import dev.chungjungsoo.gptmobile.util.isValidUrl
 
+/**
+ * A screen for setting up the API URL for a platform.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param currentRoute The current route.
+ * @param setupViewModel The view model for the setup flow.
+ * @param onNavigate The callback to be invoked when the next button is clicked.
+ * @param onBackAction The callback to be invoked when the back button is clicked.
+ */
 @Composable
 fun SetupAPIUrlScreen(
     modifier: Modifier = Modifier,
@@ -90,6 +99,11 @@ fun SetupAPIUrlScreen(
     }
 }
 
+/**
+ * A composable that displays the text for the API address input screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Composable
 fun APIAddressInputText(modifier: Modifier = Modifier) {
     Column(
@@ -112,6 +126,14 @@ fun APIAddressInputText(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * A composable that displays an input field for the API address.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param platform The platform to set the API address for.
+ * @param onChangeEvent The callback to be invoked when the value changes.
+ * @param onClearEvent The callback to be invoked when the clear button is clicked.
+ */
 @Composable
 fun APIAddressInput(
     modifier: Modifier = Modifier,

@@ -19,6 +19,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * The view model for the setup flow.
+ *
+ * @property settingRepository The repository for settings-related operations.
+ */
 @HiltViewModel
 class SetupViewModel @Inject constructor(private val settingRepository: SettingRepository) : ViewModel() {
 
@@ -31,8 +36,17 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
             Platform(ApiType.OLLAMA)
         )
     )
+    /**
+     * The state flow for the platform list.
+     */
     val platformState: StateFlow<List<Platform>> = _platformState.asStateFlow()
 
+    /**
+     * Updates the API address for a platform.
+     *
+     * @param platform The platform to update.
+     * @param address The new API address.
+     */
     fun updateAPIAddress(platform: Platform, address: String) {
         val index = _platformState.value.indexOf(platform)
 
@@ -49,6 +63,11 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Updates the checked state of a platform.
+     *
+     * @param platform The platform to update.
+     */
     fun updateCheckedState(platform: Platform) {
         val index = _platformState.value.indexOf(platform)
 
@@ -65,6 +84,12 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Updates the API token for a platform.
+     *
+     * @param platform The platform to update.
+     * @param token The new token.
+     */
     fun updateToken(platform: Platform, token: String) {
         val index = _platformState.value.indexOf(platform)
 
@@ -81,6 +106,12 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Updates the model for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param model The new model.
+     */
     fun updateModel(apiType: ApiType, model: String) {
         val index = _platformState.value.indexOfFirst { it.name == apiType }
 
@@ -97,6 +128,9 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Saves the platform state.
+     */
     fun savePlatformState() {
         _platformState.update { platforms ->
             // Update to platform enabled value
@@ -109,6 +143,12 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         }
     }
 
+    /**
+     * Gets the next setup route.
+     *
+     * @param currentRoute The current route.
+     * @return The next setup route.
+     */
     fun getNextSetupRoute(currentRoute: String?): String {
         val steps = listOf(
             Route.SELECT_PLATFORM,
@@ -152,6 +192,13 @@ class SetupViewModel @Inject constructor(private val settingRepository: SettingR
         return remainingSteps.first()
     }
 
+    /**
+     * Sets the default model for a platform.
+     *
+     * @param apiType The type of the API.
+     * @param defaultModelIndex The index of the default model.
+     * @return The default model.
+     */
     fun setDefaultModel(apiType: ApiType, defaultModelIndex: Int): String {
         val modelList = when (apiType) {
             ApiType.OPENAI -> openaiModels

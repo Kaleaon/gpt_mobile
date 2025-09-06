@@ -38,6 +38,19 @@ import androidx.compose.ui.window.DialogProperties
 import dev.chungjungsoo.gptmobile.R
 import dev.chungjungsoo.gptmobile.data.database.entity.Message
 
+/**
+ * A dialog for changing the title of a chat.
+ *
+ * @param initialTitle The initial title of the chat.
+ * @param aiCoreModeEnabled Whether the AI core mode is enabled.
+ * @param aiGeneratedResult The result of the AI-generated title.
+ * @param isAICoreLoading Whether the AI core is loading.
+ * @param onDefaultTitleMode The callback to be invoked when the default title mode is selected.
+ * @param onAICoreTitleMode The callback to be invoked when the AI core title mode is selected.
+ * @param onRetryRequest The callback to be invoked when the retry button is clicked.
+ * @param onConfirmRequest The callback to be invoked when the confirm button is clicked.
+ * @param onDismissRequest The callback to be invoked when the dialog is dismissed.
+ */
 @Composable
 fun ChatTitleDialog(
     initialTitle: String,
@@ -164,6 +177,13 @@ fun ChatTitleDialog(
     )
 }
 
+/**
+ * A dialog for editing a chat question.
+ *
+ * @param initialQuestion The initial question to edit.
+ * @param onDismissRequest The callback to be invoked when the dialog is dismissed.
+ * @param onConfirmRequest The callback to be invoked when the confirm button is clicked.
+ */
 @Composable
 fun ChatQuestionEditDialog(
     initialQuestion: Message,

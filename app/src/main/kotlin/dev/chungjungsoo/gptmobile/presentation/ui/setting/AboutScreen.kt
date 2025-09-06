@@ -31,6 +31,12 @@ import androidx.compose.ui.unit.dp
 import dev.chungjungsoo.gptmobile.R
 import dev.chungjungsoo.gptmobile.presentation.common.SettingItem
 
+/**
+ * A screen that displays information about the application.
+ *
+ * @param onNavigationClick The callback to be invoked when the navigation icon is clicked.
+ * @param onNavigationToLicense The callback to be invoked when the license item is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
@@ -163,6 +169,12 @@ fun AboutScreen(
     }
 }
 
+/**
+ * The top app bar for the about screen.
+ *
+ * @param scrollBehavior The scroll behavior for the top app bar.
+ * @param navigationOnClick The callback to be invoked when the navigation icon is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutTopAppBar(

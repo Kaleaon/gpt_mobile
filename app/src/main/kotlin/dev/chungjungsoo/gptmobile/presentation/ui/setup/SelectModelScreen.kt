@@ -46,6 +46,16 @@ import dev.chungjungsoo.gptmobile.util.generateOpenAIModelList
 import dev.chungjungsoo.gptmobile.util.getAPIModelSelectDescription
 import dev.chungjungsoo.gptmobile.util.getAPIModelSelectTitle
 
+/**
+ * A screen for selecting a model for a platform.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param setupViewModel The view model for the setup flow.
+ * @param currentRoute The current route.
+ * @param platformType The type of the platform.
+ * @param onNavigate The callback to be invoked when the next button is clicked.
+ * @param onBackAction The callback to be invoked when the back button is clicked.
+ */
 @Composable
 fun SelectModelScreen(
     modifier: Modifier = Modifier,
@@ -119,6 +129,13 @@ fun SelectModelScreen(
     }
 }
 
+/**
+ * A composable that displays the title and description for the model selection screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param title The title to display.
+ * @param description The description to display.
+ */
 @Composable
 fun SelectModelText(
     modifier: Modifier = Modifier,
@@ -145,6 +162,14 @@ fun SelectModelText(
     }
 }
 
+/**
+ * A composable that displays a group of radio buttons for selecting a model.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param availableModels The list of available models.
+ * @param initModel The initial model to select.
+ * @param onChangeEvent The callback to be invoked when the model is changed.
+ */
 @Composable
 fun ModelRadioGroup(
     modifier: Modifier = Modifier,

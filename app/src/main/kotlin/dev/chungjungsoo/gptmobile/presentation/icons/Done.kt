@@ -11,6 +11,9 @@ import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 
+/**
+ * A done icon.
+ */
 val Done: ImageVector
     // It should be recomposed when theme is changed. So calculate every time (Expensive, but only used in setup complete screen)
     @Composable

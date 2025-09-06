@@ -23,6 +23,11 @@ import androidx.compose.ui.unit.dp
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import dev.chungjungsoo.gptmobile.R
 
+/**
+ * A screen that displays the licenses of the open source libraries used in the application.
+ *
+ * @param onNavigationClick The callback to be invoked when the navigation icon is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LicenseScreen(

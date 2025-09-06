@@ -46,6 +46,14 @@ import dev.chungjungsoo.gptmobile.util.getPlatformHelpLinkResources
 import dev.chungjungsoo.gptmobile.util.isValidUrl
 import kotlin.math.roundToInt
 
+/**
+ * A dialog for setting the API URL for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param initialValue The initial value of the API URL.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun APIUrlDialog(
     dialogState: SettingViewModel.DialogState,
@@ -72,6 +80,13 @@ fun APIUrlDialog(
     }
 }
 
+/**
+ * A dialog for setting the API key for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun APIKeyDialog(
     dialogState: SettingViewModel.DialogState,
@@ -90,6 +105,14 @@ fun APIKeyDialog(
     }
 }
 
+/**
+ * A dialog for setting the model for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param model The initial model.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun ModelDialog(
     dialogState: SettingViewModel.DialogState,
@@ -110,6 +133,14 @@ fun ModelDialog(
     }
 }
 
+/**
+ * A dialog for setting the temperature for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param temperature The initial temperature.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun TemperatureDialog(
     dialogState: SettingViewModel.DialogState,
@@ -130,6 +161,14 @@ fun TemperatureDialog(
     }
 }
 
+/**
+ * A dialog for setting the top-p value for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param topP The initial top-p value.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun TopPDialog(
     dialogState: SettingViewModel.DialogState,
@@ -149,6 +188,14 @@ fun TopPDialog(
     }
 }
 
+/**
+ * A dialog for setting the system prompt for a platform.
+ *
+ * @param dialogState The state of the dialog.
+ * @param apiType The type of the API.
+ * @param systemPrompt The initial system prompt.
+ * @param settingViewModel The view model for the settings screen.
+ */
 @Composable
 fun SystemPromptDialog(
     dialogState: SettingViewModel.DialogState,

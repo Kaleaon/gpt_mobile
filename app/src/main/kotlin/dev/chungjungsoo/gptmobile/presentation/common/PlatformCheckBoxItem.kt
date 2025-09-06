@@ -20,6 +20,16 @@ import androidx.compose.ui.unit.dp
 import dev.chungjungsoo.gptmobile.R
 import dev.chungjungsoo.gptmobile.data.dto.Platform
 
+/**
+ * A composable that displays a checkbox item for a platform.
+ *
+ * @param modifier The modifier to be applied to the component.
+ * @param platform The platform to display.
+ * @param enabled Whether the checkbox is enabled.
+ * @param title The title of the checkbox item.
+ * @param description The description of the checkbox item.
+ * @param onClickEvent The event to be invoked when the checkbox is clicked.
+ */
 @Composable
 fun PlatformCheckBoxItem(
     modifier: Modifier = Modifier,

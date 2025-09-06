@@ -2,6 +2,10 @@ package dev.chungjungsoo.gptmobile.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ * This file contains the color palette for the application.
+ * The colors are defined for both light and dark themes, with different contrast levels.
+ */
 val primaryLight = Color(0xFF1A6B51)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFFA6F2D2)

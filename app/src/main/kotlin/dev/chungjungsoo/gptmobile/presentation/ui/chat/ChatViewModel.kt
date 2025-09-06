@@ -20,97 +20,182 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * The view model for the chat screen.
+ *
+ * @param savedStateHandle The saved state handle for the view model.
+ * @param chatRepository The repository for chat-related operations.
+ * @param settingRepository The repository for settings-related operations.
+ */
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val chatRepository: ChatRepository,
     private val settingRepository: SettingRepository
 ) : ViewModel() {
+    /**
+     * The loading state for the chat.
+     */
     sealed class LoadingState {
+        /**
+         * The idle state.
+         */
         data object Idle : LoadingState()
+        /**
+         * The loading state.
+         */
         data object Loading : LoadingState()
     }
 
     private val chatRoomId: Int = checkNotNull(savedStateHandle["chatRoomId"])
     private val enabledPlatformString: String = checkNotNull(savedStateHandle["enabledPlatforms"])
+    /**
+     * The list of enabled platforms in the chat.
+     */
     val enabledPlatformsInChat = enabledPlatformString.split(',').map { s -> ApiType.valueOf(s) }
     private val currentTimeStamp: Long
         get() = System.currentTimeMillis() / 1000
 
     private val _chatRoom = MutableStateFlow<ChatRoom>(ChatRoom(id = -1, title = "", enabledPlatform = enabledPlatformsInChat))
+    /**
+     * The state flow for the chat room.
+     */
     val chatRoom = _chatRoom.asStateFlow()
 
     private val _isChatTitleDialogOpen = MutableStateFlow(false)
+    /**
+     * The state flow for the chat title dialog.
+     */
     val isChatTitleDialogOpen = _isChatTitleDialogOpen.asStateFlow()
 
     private val _isEditQuestionDialogOpen = MutableStateFlow(false)
+    /**
+     * The state flow for the edit question dialog.
+     */
     val isEditQuestionDialogOpen = _isEditQuestionDialogOpen.asStateFlow()
 
     // Enabled platforms list
     private val _enabledPlatformsInApp = MutableStateFlow(listOf<ApiType>())
+    /**
+     * The state flow for the enabled platforms in the app.
+     */
     val enabledPlatformsInApp = _enabledPlatformsInApp.asStateFlow()
 
     // List of question & answers (User, Assistant)
     private val _messages = MutableStateFlow(listOf<Message>())
+    /**
+     * The state flow for the messages.
+     */
     val messages: StateFlow<List<Message>> = _messages.asStateFlow()
 
     // User input used for TextField
     private val _question = MutableStateFlow("")
+    /**
+     * The state flow for the user's question.
+     */
     val question: StateFlow<String> = _question.asStateFlow()
 
     // Used for passing user question to Edit User Message Dialog
     private val _editedQuestion = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = null))
+    /**
+     * The state flow for the edited question.
+     */
     val editedQuestion = _editedQuestion.asStateFlow()
 
     // Loading state for each platforms
     private val _openaiLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the OpenAI loading state.
+     */
     val openaiLoadingState = _openaiLoadingState.asStateFlow()
 
     private val _anthropicLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the Anthropic loading state.
+     */
     val anthropicLoadingState = _anthropicLoadingState.asStateFlow()
 
     private val _googleLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the Google loading state.
+     */
     val googleLoadingState = _googleLoadingState.asStateFlow()
 
     private val _groqLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the Groq loading state.
+     */
     val groqLoadingState = _groqLoadingState.asStateFlow()
 
     private val _ollamaLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the Ollama loading state.
+     */
     val ollamaLoadingState = _ollamaLoadingState.asStateFlow()
 
     private val _geminiNanoLoadingState = MutableStateFlow<LoadingState>(LoadingState.Idle)
+    /**
+     * The state flow for the Gemini Nano loading state.
+     */
     val geminiNanoLoadingState = _geminiNanoLoadingState.asStateFlow()
 
     // Total loading state. It should be updated if one of the loading state has changed.
     // If all loading states are idle, this value should have `true`.
     private val _isIdle = MutableStateFlow(true)
+    /**
+     * The state flow for the idle state.
+     */
     val isIdle = _isIdle.asStateFlow()
 
     // State for the message loading state (From the database)
     private val _isLoaded = MutableStateFlow(false)
+    /**
+     * The state flow for the loaded state.
+     */
     val isLoaded = _isLoaded.asStateFlow()
 
     // Currently active(chat completion) user input. This is used when user input is sent.
     private val _userMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = null))
+    /**
+     * The state flow for the user message.
+     */
     val userMessage = _userMessage.asStateFlow()
 
     // Currently active(chat completion) assistant output. This is used when data is received from the API.
     private val _openAIMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = ApiType.OPENAI))
+    /**
+     * The state flow for the OpenAI message.
+     */
     val openAIMessage = _openAIMessage.asStateFlow()
 
     private val _anthropicMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = ApiType.ANTHROPIC))
+    /**
+     * The state flow for the Anthropic message.
+     */
     val anthropicMessage = _anthropicMessage.asStateFlow()
 
     private val _googleMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = ApiType.GOOGLE))
+    /**
+     * The state flow for the Google message.
+     */
     val googleMessage = _googleMessage.asStateFlow()
 
     private val _groqMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = ApiType.GROQ))
+    /**
+     * The state flow for the Groq message.
+     */
     val groqMessage = _groqMessage.asStateFlow()
 
     private val _ollamaMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = ApiType.OLLAMA))
+    /**
+     * The state flow for the Ollama message.
+     */
     val ollamaMessage = _ollamaMessage.asStateFlow()
 
     private val _geminiNanoMessage = MutableStateFlow(Message(chatId = chatRoomId, content = "", platformType = null))
+    /**
+     * The state flow for the Gemini Nano message.
+     */
     val geminiNanoMessage = _geminiNanoMessage.asStateFlow()
 
     // Flows for assistant message streams
@@ -130,6 +215,9 @@ class ChatViewModel @Inject constructor(
         observeFlow()
     }
 
+    /**
+     * Asks a question to the chatbot.
+     */
     fun askQuestion() {
         Log.d("Question: ", _question.value)
         _userMessage.update { it.copy(content = _question.value, createdAt = currentTimeStamp) }
@@ -137,28 +225,55 @@ class ChatViewModel @Inject constructor(
         completeChat()
     }
 
+    /**
+     * Closes the chat title dialog.
+     */
     fun closeChatTitleDialog() = _isChatTitleDialogOpen.update { false }
 
+    /**
+     * Closes the edit question dialog.
+     */
     fun closeEditQuestionDialog() {
         _editedQuestion.update { Message(chatId = chatRoomId, content = "", platformType = null) }
         _isEditQuestionDialogOpen.update { false }
     }
 
+    /**
+     * Edits a question.
+     *
+     * @param q The question to edit.
+     */
     fun editQuestion(q: Message) {
         _messages.update { it.filter { message -> message.id < q.id && message.createdAt < q.createdAt } }
         _userMessage.update { it.copy(content = q.content, createdAt = currentTimeStamp) }
         completeChat()
     }
 
+    /**
+     * Opens the chat title dialog.
+     */
     fun openChatTitleDialog() = _isChatTitleDialogOpen.update { true }
 
+    /**
+     * Opens the edit question dialog.
+     *
+     * @param question The question to edit.
+     */
     fun openEditQuestionDialog(question: Message) {
         _editedQuestion.update { question }
         _isEditQuestionDialogOpen.update { true }
     }
 
+    /**
+     * Generates a default chat title.
+     *
+     * @return The default chat title.
+     */
     fun generateDefaultChatTitle(): String? = chatRepository.generateDefaultChatTitle(_messages.value)
 
+    /**
+     * Generates an AI chat title.
+     */
     fun generateAIChatTitle() {
         viewModelScope.launch {
             _geminiNanoLoadingState.update { LoadingState.Loading }
@@ -166,6 +281,11 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Retries a question.
+     *
+     * @param message The message to retry.
+     */
     fun retryQuestion(message: Message) {
         val latestQuestionIndex = _messages.value.indexOfLast { it.platformType == null }
 
@@ -219,6 +339,11 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the chat title.
+     *
+     * @param title The new title.
+     */
     fun updateChatTitle(title: String) {
         // Should be only used for changing chat title after the chatroom is created.
         if (_chatRoom.value.id > 0) {
@@ -229,6 +354,11 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Exports the chat history to a Markdown file.
+     *
+     * @return A pair of the file name and the file content.
+     */
     fun exportChat(): Pair<String, String> {
         // Build the chat history in Markdown format
         val chatHistoryMarkdown = buildString {
@@ -259,6 +389,11 @@ class ChatViewModel @Inject constructor(
         return format.format(currentDate)
     }
 
+    /**
+     * Updates the user's question.
+     *
+     * @param q The new question.
+     */
     fun updateQuestion(q: String) = _question.update { q }
 
     private fun addMessage(message: Message) = _messages.update { it + listOf(message) }

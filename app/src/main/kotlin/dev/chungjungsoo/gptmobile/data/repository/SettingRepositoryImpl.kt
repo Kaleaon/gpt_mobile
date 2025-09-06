@@ -9,6 +9,11 @@ import dev.chungjungsoo.gptmobile.data.model.DynamicTheme
 import dev.chungjungsoo.gptmobile.data.model.ThemeMode
 import javax.inject.Inject
 
+/**
+ * An implementation of the [SettingRepository] interface.
+ *
+ * @property settingDataSource The data source for the settings.
+ */
 class SettingRepositoryImpl @Inject constructor(
     private val settingDataSource: SettingDataSource
 ) : SettingRepository {

@@ -30,6 +30,11 @@ import dev.chungjungsoo.gptmobile.presentation.ui.setup.SetupViewModel
 import dev.chungjungsoo.gptmobile.presentation.ui.setup.TokenInputScreen
 import dev.chungjungsoo.gptmobile.presentation.ui.startscreen.StartScreen
 
+/**
+ * Composable function that defines the navigation graph for the setup flow.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
@@ -47,12 +52,22 @@ fun SetupNavGraph(navController: NavHostController) {
     }
 }
 
+/**
+ * Defines the navigation for the start screen.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 fun NavGraphBuilder.startScreenNavigation(navController: NavHostController) {
     composable(Route.GET_STARTED) {
         StartScreen { navController.navigate(Route.SETUP_ROUTE) }
     }
 }
 
+/**
+ * Defines the navigation for the setup flow.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 fun NavGraphBuilder.setupNavigation(
     navController: NavHostController
 ) {
@@ -174,6 +189,11 @@ fun NavGraphBuilder.setupNavigation(
     }
 }
 
+/**
+ * Defines the navigation for the home screen.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 fun NavGraphBuilder.homeScreenNavigation(navController: NavHostController) {
     composable(Route.CHAT_LIST) {
         HomeScreen(
@@ -198,6 +218,11 @@ fun NavGraphBuilder.homeScreenNavigation(navController: NavHostController) {
     }
 }
 
+/**
+ * Defines the navigation for the chat screen.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 fun NavGraphBuilder.chatScreenNavigation(navController: NavHostController) {
     composable(
         Route.CHAT_ROOM,
@@ -212,6 +237,11 @@ fun NavGraphBuilder.chatScreenNavigation(navController: NavHostController) {
     }
 }
 
+/**
+ * Defines the navigation for the settings screen.
+ *
+ * @param navController The navigation controller for the setup flow.
+ */
 fun NavGraphBuilder.settingNavigation(navController: NavHostController) {
     navigation(startDestination = Route.SETTINGS, route = Route.SETTING_ROUTE) {
         composable(Route.SETTINGS) {

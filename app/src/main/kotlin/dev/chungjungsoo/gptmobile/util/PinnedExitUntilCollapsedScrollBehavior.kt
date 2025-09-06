@@ -20,7 +20,16 @@ import androidx.compose.ui.unit.Velocity
 import kotlin.math.abs
 
 /**
+ * A [TopAppBarScrollBehavior] that pins the app bar when scrolling up, and exits until collapsed
+ * when scrolling down.
+ *
  * Special thanks to @BenjyTec: https://stackoverflow.com/a/78538564/8606428
+ *
+ * @param state The state of the top app bar.
+ * @param canScroll A function that returns whether the app bar can be scrolled.
+ * @param snapAnimationSpec The animation spec for snapping the app bar.
+ * @param flingAnimationSpec The animation spec for flinging the app bar.
+ * @return A [TopAppBarScrollBehavior].
  */
 @ExperimentalMaterial3Api
 @Composable
