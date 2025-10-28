@@ -6,6 +6,17 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import dev.chungjungsoo.gptmobile.data.model.ApiType
 
+/**
+ * A data class that represents a message in a chat room.
+ *
+ * @property id The ID of the message.
+ * @property chatId The ID of the chat room the message belongs to.
+ * @property content The content of the message.
+ * @property imageData The image data of the message.
+ * @property linkedMessageId The ID of the message this message is linked to.
+ * @property platformType The type of the platform that sent the message.
+ * @property createdAt The timestamp when the message was created.
+ */
 @Entity(
     tableName = "messages",
     foreignKeys = [

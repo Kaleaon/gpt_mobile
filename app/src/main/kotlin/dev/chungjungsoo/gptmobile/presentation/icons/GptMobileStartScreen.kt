@@ -17,6 +17,9 @@ import dev.chungjungsoo.gptmobile.data.model.DynamicTheme
 import dev.chungjungsoo.gptmobile.data.model.ThemeMode
 import dev.chungjungsoo.gptmobile.presentation.theme.GPTMobileTheme
 
+/**
+ * An image vector for the start screen.
+ */
 val GptMobileStartScreen: ImageVector
     @Composable
     get() {

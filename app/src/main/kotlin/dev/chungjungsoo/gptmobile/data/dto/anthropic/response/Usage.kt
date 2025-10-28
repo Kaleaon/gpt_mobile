@@ -3,6 +3,14 @@ package dev.chungjungsoo.gptmobile.data.dto.anthropic.response
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A data class that represents the usage of a response.
+ *
+ * @property inputTokens The number of input tokens.
+ * @property cacheCreationInputTokens The number of input tokens used for cache creation.
+ * @property cacheReadInputTokens The number of input tokens read from the cache.
+ * @property outputTokens The number of output tokens.
+ */
 @Serializable
 data class Usage(
 

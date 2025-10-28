@@ -71,6 +71,14 @@ import dev.chungjungsoo.gptmobile.data.model.ApiType
 import dev.chungjungsoo.gptmobile.presentation.common.PlatformCheckBoxItem
 import dev.chungjungsoo.gptmobile.util.getPlatformTitleResources
 
+/**
+ * The home screen of the application.
+ *
+ * @param homeViewModel The view model for the home screen.
+ * @param settingOnClick The callback to be invoked when the settings button is clicked.
+ * @param onExistingChatClick The callback to be invoked when an existing chat is clicked.
+ * @param navigateToNewChat The callback to be invoked when a new chat is to be created.
+ */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
@@ -203,6 +211,15 @@ fun HomeScreen(
     }
 }
 
+/**
+ * The top app bar for the home screen.
+ *
+ * @param isSelectionMode Whether the selection mode is enabled.
+ * @param selectedChats The number of selected chats.
+ * @param scrollBehavior The scroll behavior for the top app bar.
+ * @param actionOnClick The callback to be invoked when the action button is clicked.
+ * @param navigationOnClick The callback to be invoked when the navigation button is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopAppBar(
@@ -307,6 +324,13 @@ private fun LazyListState.isScrollingUp(): Boolean {
     }.value
 }
 
+/**
+ * A button for creating a new chat.
+ *
+ * @param modifier The modifier to be applied to the button.
+ * @param expanded Whether the button is expanded.
+ * @param onClick The callback to be invoked when the button is clicked.
+ */
 @Preview
 @Composable
 fun NewChatButton(
@@ -329,6 +353,14 @@ fun NewChatButton(
     )
 }
 
+/**
+ * A dialog for selecting the platform to use for a new chat.
+ *
+ * @param platforms The list of available platforms.
+ * @param onDismissRequest The callback to be invoked when the dialog is dismissed.
+ * @param onConfirmation The callback to be invoked when the confirmation button is clicked.
+ * @param onPlatformSelect The callback to be invoked when a platform is selected.
+ */
 @Composable
 fun SelectPlatformDialog(
     platforms: List<Platform>,
@@ -396,6 +428,9 @@ fun SelectPlatformDialog(
     )
 }
 
+/**
+ * A composable that displays a warning text when no platform is enabled.
+ */
 @Preview
 @Composable
 fun EnablePlatformWarningText() {
@@ -428,6 +463,12 @@ private fun SelectPlatformDialogPreview() {
     )
 }
 
+/**
+ * A dialog that warns the user before deleting chats.
+ *
+ * @param onDismissRequest The callback to be invoked when the dialog is dismissed.
+ * @param onConfirm The callback to be invoked when the confirmation button is clicked.
+ */
 @Composable
 fun DeleteWarningDialog(
     onDismissRequest: () -> Unit,

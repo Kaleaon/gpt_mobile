@@ -36,6 +36,15 @@ import dev.chungjungsoo.gptmobile.presentation.common.TokenInputField
 import dev.chungjungsoo.gptmobile.util.getPlatformAPILabelResources
 import dev.chungjungsoo.gptmobile.util.getPlatformHelpLinkResources
 
+/**
+ * A screen for inputting API tokens.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param currentRoute The current route.
+ * @param setupViewModel The view model for the setup flow.
+ * @param onNavigate The callback to be invoked when the next button is clicked.
+ * @param onBackAction The callback to be invoked when the back button is clicked.
+ */
 @Composable
 fun TokenInputScreen(
     modifier: Modifier = Modifier,
@@ -84,6 +93,11 @@ fun TokenInputScreen(
     }
 }
 
+/**
+ * A composable that displays the text for the token input screen.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 fun TokenInputText(modifier: Modifier = Modifier) {
@@ -112,6 +126,14 @@ fun TokenInputText(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * A composable that displays a list of token input fields.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param platforms The list of platforms to display.
+ * @param onChangeEvent The callback to be invoked when the value changes.
+ * @param onClearEvent The callback to be invoked when the clear button is clicked.
+ */
 @Preview
 @Composable
 fun TokenInput(

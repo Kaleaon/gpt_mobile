@@ -14,6 +14,11 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
+/**
+ * An implementation of the [SettingDataSource] interface.
+ *
+ * @property dataStore The data store for the settings.
+ */
 class SettingDataSourceImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) : SettingDataSource {

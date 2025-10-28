@@ -20,6 +20,9 @@ import dev.chungjungsoo.gptmobile.presentation.common.ThemeSettingProvider
 import dev.chungjungsoo.gptmobile.presentation.theme.GPTMobileTheme
 import kotlinx.coroutines.launch
 
+/**
+ * The main activity of the application.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 

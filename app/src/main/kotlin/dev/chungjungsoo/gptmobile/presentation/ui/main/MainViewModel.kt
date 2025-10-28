@@ -14,18 +14,38 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * The view model for the main activity.
+ *
+ * @property settingRepository The repository for settings-related operations.
+ */
 @HiltViewModel
 class MainViewModel @Inject constructor(private val settingRepository: SettingRepository) : ViewModel() {
 
+    /**
+     * The event for the splash screen.
+     */
     sealed class SplashEvent {
+        /**
+         * An event to open the intro screen.
+         */
         data object OpenIntro : SplashEvent()
+        /**
+         * An event to open the home screen.
+         */
         data object OpenHome : SplashEvent()
     }
 
     private val _isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    /**
+     * The state flow for the ready state.
+     */
     val isReady: StateFlow<Boolean> = _isReady.asStateFlow()
 
     private val _event: MutableSharedFlow<SplashEvent> = MutableSharedFlow()
+    /**
+     * The shared flow for the splash event.
+     */
     val event: SharedFlow<SplashEvent> = _event.asSharedFlow()
 
     init {

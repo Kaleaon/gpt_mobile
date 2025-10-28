@@ -28,6 +28,15 @@ import dev.chungjungsoo.gptmobile.presentation.common.Route
 import dev.chungjungsoo.gptmobile.util.getPlatformDescriptionResources
 import dev.chungjungsoo.gptmobile.util.getPlatformTitleResources
 
+/**
+ * A screen for selecting the platforms to use.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param setupViewModel The view model for the setup flow.
+ * @param currentRoute The current route.
+ * @param onNavigate The callback to be invoked when the next button is clicked.
+ * @param onBackAction The callback to be invoked when the back button is clicked.
+ */
 @Composable
 fun SelectPlatformScreen(
     modifier: Modifier = Modifier,
@@ -66,6 +75,11 @@ fun SelectPlatformScreen(
     }
 }
 
+/**
+ * A composable that displays the "Get Started" text.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Preview
 @Composable
 fun GetStartedText(modifier: Modifier = Modifier) {
@@ -89,6 +103,13 @@ fun GetStartedText(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * A composable that displays a list of platforms to select from.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param platforms The list of platforms to display.
+ * @param onClickEvent The callback to be invoked when a platform is clicked.
+ */
 @Composable
 fun SelectPlatform(
     modifier: Modifier = Modifier,

@@ -35,6 +35,15 @@ import dev.chungjungsoo.gptmobile.presentation.theme.GPTMobileTheme
 import dev.chungjungsoo.gptmobile.util.getPlatformAPIBrandText
 import dev.jeziellago.compose.markdowntext.MarkdownText
 
+/**
+ * A composable that displays a user chat bubble.
+ *
+ * @param modifier The modifier to be applied to the bubble.
+ * @param text The text to display.
+ * @param isLoading Whether the message is loading.
+ * @param onEditClick The callback to be invoked when the edit button is clicked.
+ * @param onCopyClick The callback to be invoked when the copy button is clicked.
+ */
 @Composable
 fun UserChatBubble(
     modifier: Modifier = Modifier,
@@ -73,6 +82,18 @@ fun UserChatBubble(
     }
 }
 
+/**
+ * A composable that displays an opponent chat bubble.
+ *
+ * @param modifier The modifier to be applied to the bubble.
+ * @param canRetry Whether the message can be retried.
+ * @param isLoading Whether the message is loading.
+ * @param isError Whether the message is an error.
+ * @param apiType The type of API used.
+ * @param text The text to display.
+ * @param onCopyClick The callback to be invoked when the copy button is clicked.
+ * @param onRetryClick The callback to be invoked when the retry button is clicked.
+ */
 @Composable
 fun OpponentChatBubble(
     modifier: Modifier = Modifier,

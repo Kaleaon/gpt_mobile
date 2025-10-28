@@ -6,9 +6,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- When certain value is used in the future, use @EncodeDefault or remove default values
+ * A data class that represents a message request.
+ *
+ * When certain value is used in the future, use @EncodeDefault or remove default values
+ *
+ * @property model The model to use for the request.
+ * @property messages The list of messages to send.
+ * @property maxTokens The maximum number of tokens to generate.
+ * @property metadata The metadata for the request.
+ * @property stopSequences The list of stop sequences.
+ * @property stream Whether to stream the response.
+ * @property systemPrompt The system prompt.
+ * @property temperature The temperature for the request.
+ * @property topK The top-k value for the request.
+ * @property topP The top-p value for the request.
  */
-
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
 data class MessageRequest(

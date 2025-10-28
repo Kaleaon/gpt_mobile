@@ -10,6 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+/**
+ * A composable that displays a primary long button.
+ *
+ * @param modifier The modifier to be applied to the button.
+ * @param enabled Whether the button is enabled.
+ * @param onClick The action to perform when the button is clicked.
+ * @param text The text to display on the button.
+ */
 @Preview
 @Composable
 fun PrimaryLongButton(

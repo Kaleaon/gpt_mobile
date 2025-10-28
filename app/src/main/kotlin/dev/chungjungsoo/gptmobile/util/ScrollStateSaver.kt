@@ -3,6 +3,9 @@ package dev.chungjungsoo.gptmobile.util
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.saveable.Saver
 
+/**
+ * A [Saver] for a [DefaultHashMap] of [ScrollState]s.
+ */
 val multiScrollStateSaver: Saver<DefaultHashMap<Int, ScrollState>, *> = Saver(
     save = {
         val saver = hashMapOf<Int, Int>()

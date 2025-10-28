@@ -17,6 +17,13 @@ import androidx.core.view.WindowCompat
 import dev.chungjungsoo.gptmobile.data.model.DynamicTheme
 import dev.chungjungsoo.gptmobile.data.model.ThemeMode
 
+/**
+ * A data class that holds the extended color scheme for the application.
+ *
+ * @property customColor1 The first custom color family.
+ * @property chatGPTOfficialColor The official ChatGPT color family.
+ * @property customColor2 The second custom color family.
+ */
 @Immutable
 data class ExtendedColorScheme(
     val customColor1: ColorFamily,
@@ -378,6 +385,14 @@ val extendedDarkHighContrast = ExtendedColorScheme(
     )
 )
 
+/**
+ * A data class that holds the colors for a color family.
+ *
+ * @property color The main color.
+ * @property onColor The color to be used on top of the main color.
+ * @property colorContainer The container color.
+ * @property onColorContainer The color to be used on top of the container color.
+ */
 @Immutable
 data class ColorFamily(
     val color: Color,
@@ -386,6 +401,9 @@ data class ColorFamily(
     val onColorContainer: Color
 )
 
+/**
+ * An unspecified color family.
+ */
 val unspecified_scheme = ColorFamily(
     Color.Unspecified,
     Color.Unspecified,
@@ -393,6 +411,13 @@ val unspecified_scheme = ColorFamily(
     Color.Unspecified
 )
 
+/**
+ * The main theme for the application.
+ *
+ * @param dynamicTheme The dynamic theme to use.
+ * @param themeMode The theme mode to use.
+ * @param content The content to be displayed.
+ */
 @Composable
 fun GPTMobileTheme(
     dynamicTheme: DynamicTheme = DynamicTheme.OFF,

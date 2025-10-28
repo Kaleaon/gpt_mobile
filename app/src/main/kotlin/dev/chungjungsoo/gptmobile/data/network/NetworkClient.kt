@@ -17,6 +17,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.serialization.json.Json
 
+/**
+ * A network client for making API calls.
+ *
+ * @property httpEngine The HTTP engine to use for making API calls.
+ */
 @Singleton
 class NetworkClient @Inject constructor(
     private val httpEngine: HttpClientEngineFactory<*>
@@ -53,6 +58,11 @@ class NetworkClient @Inject constructor(
         }
     }
 
+    /**
+     * Returns the [HttpClient] instance.
+     *
+     * @return The [HttpClient] instance.
+     */
     operator fun invoke(): HttpClient = client
 
     companion object {

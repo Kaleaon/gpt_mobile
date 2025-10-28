@@ -14,10 +14,23 @@ import dev.chungjungsoo.gptmobile.data.repository.ChatRepositoryImpl
 import dev.chungjungsoo.gptmobile.data.repository.SettingRepository
 import javax.inject.Singleton
 
+/**
+ * A Hilt module for providing the chat repository.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object ChatRepositoryModule {
 
+    /**
+     * Provides the chat repository.
+     *
+     * @param appContext The application context.
+     * @param chatRoomDao The DAO for the chat room table.
+     * @param messageDao The DAO for the message table.
+     * @param settingRepository The repository for settings-related operations.
+     * @param anthropicAPI The Anthropic API.
+     * @return The chat repository.
+     */
     @Provides
     @Singleton
     fun provideChatRepository(

@@ -16,6 +16,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.chungjungsoo.gptmobile.R
 
+/**
+ * A composable that displays a setting item.
+ *
+ * @param modifier The modifier to be applied to the item.
+ * @param title The title of the setting.
+ * @param description The description of the setting.
+ * @param enabled Whether the setting is enabled.
+ * @param onItemClick The callback to be invoked when the item is clicked.
+ * @param showTrailingIcon Whether to show the trailing icon.
+ * @param showLeadingIcon Whether to show the leading icon.
+ * @param leadingIcon The composable to be used as the leading icon.
+ */
 @Composable
 fun SettingItem(
     modifier: Modifier = Modifier,

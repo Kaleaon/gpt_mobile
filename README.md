@@ -74,6 +74,28 @@ You can download the app from the following sites:
 Cross platform updates are supported. However, GitHub Releases will be the fastest track among the platforms since there is no verification/auditing process. (Probably 1 week difference?)
 
 
+## Building from Source
+
+To build the app from source, you need to have Android Studio installed.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Taewan-P/gpt_mobile.git
+   ```
+2. Open the project in Android Studio.
+3. Create a `keystore.properties` file in the root directory of the project with the following content:
+   ```
+   storePassword=<your_store_password>
+   keyAlias=<your_key_alias>
+   keyPassword=<your_key_password>
+   storeFile=keystore/keystore.jks
+   ```
+   * `storePassword`: The password for the keystore.
+   * `keyAlias`: The alias for the key.
+   * `keyPassword`: The password for the key.
+   * `storeFile`: The path to the keystore file. You will need to generate this file.
+4. Build the project.
+
 
 ## Contributions
 

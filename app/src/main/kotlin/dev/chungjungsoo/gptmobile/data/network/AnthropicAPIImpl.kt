@@ -28,6 +28,11 @@ import kotlinx.coroutines.isActive
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.encodeToJsonElement
 
+/**
+ * An implementation of the [AnthropicAPI] interface.
+ *
+ * @property networkClient The network client to use for making API calls.
+ */
 class AnthropicAPIImpl @Inject constructor(
     private val networkClient: NetworkClient
 ) : AnthropicAPI {

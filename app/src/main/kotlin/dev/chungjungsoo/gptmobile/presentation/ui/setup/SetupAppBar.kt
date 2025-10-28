@@ -10,6 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import dev.chungjungsoo.gptmobile.R
 
+/**
+ * A composable that displays the app bar for the setup flow.
+ *
+ * @param backAction The action to perform when the back button is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SetupAppBar(

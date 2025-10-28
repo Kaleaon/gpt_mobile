@@ -20,6 +20,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.chungjungsoo.gptmobile.R
 
+/**
+ * A composable that displays a radio button item.
+ *
+ * @param modifier The modifier to be applied to the item.
+ * @param value The value of the radio button.
+ * @param selected Whether the radio button is selected.
+ * @param title The title of the radio button.
+ * @param description The description of the radio button.
+ * @param onSelected The callback to be invoked when the radio button is selected.
+ */
 @Preview
 @Composable
 fun RadioItem(

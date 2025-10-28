@@ -38,6 +38,15 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 
+/**
+ * An implementation of the [ChatRepository] interface.
+ *
+ * @param appContext The application context.
+ * @param chatRoomDao The DAO for the chat room table.
+ * @param messageDao The DAO for the message table.
+ * @param settingRepository The repository for settings-related operations.
+ * @param anthropic The Anthropic API.
+ */
 class ChatRepositoryImpl @Inject constructor(
     private val appContext: Context,
     private val chatRoomDao: ChatRoomDao,

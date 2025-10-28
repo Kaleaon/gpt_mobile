@@ -20,6 +20,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.chungjungsoo.gptmobile.R
 
+/**
+ * A composable that displays a token input field.
+ *
+ * @param modifier The modifier to be applied to the field.
+ * @param value The value of the field.
+ * @param onValueChange The callback to be invoked when the value changes.
+ * @param keyboardOptions The keyboard options for the field.
+ * @param onClearClick The callback to be invoked when the clear button is clicked.
+ * @param label The label of the field.
+ * @param helpLink The link to the help page.
+ */
 @Preview
 @Composable
 fun TokenInputField(
@@ -56,6 +67,11 @@ fun TokenInputField(
     )
 }
 
+/**
+ * A composable that displays a help text with a link.
+ *
+ * @param helpLink The link to the help page.
+ */
 @Preview
 @Composable
 fun HelpText(helpLink: String = "") {

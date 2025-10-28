@@ -85,6 +85,12 @@ import java.io.File
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * The main screen for the chat feature.
+ *
+ * @param chatViewModel The view model for the chat screen.
+ * @param onBackAction The action to perform when the back button is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatScreen(
@@ -415,6 +421,15 @@ private fun ChatTopBar(
     )
 }
 
+/**
+ * A dropdown menu for the chat screen.
+ *
+ * @param isDropDownMenuExpanded Whether the dropdown menu is expanded.
+ * @param isMenuItemEnabled Whether the menu items are enabled.
+ * @param onDismissRequest The callback to be invoked when the menu is dismissed.
+ * @param onChatTitleItemClick The callback to be invoked when the chat title item is clicked.
+ * @param onExportChatItemClick The callback to be invoked when the export chat item is clicked.
+ */
 @Composable
 fun ChatDropdownMenu(
     isDropDownMenuExpanded: Boolean,
@@ -470,6 +485,15 @@ private fun exportChat(context: Context, chatViewModel: ChatViewModel) {
     }
 }
 
+/**
+ * A composable that displays the chat input box.
+ *
+ * @param value The current value of the input box.
+ * @param onValueChange The callback to be invoked when the value changes.
+ * @param chatEnabled Whether the chat is enabled.
+ * @param sendButtonEnabled Whether the send button is enabled.
+ * @param onSendButtonClick The callback to be invoked when the send button is clicked.
+ */
 @Preview
 @Composable
 fun ChatInputBox(
@@ -533,6 +557,11 @@ fun ChatInputBox(
     }
 }
 
+/**
+ * A button that scrolls to the bottom of the chat.
+ *
+ * @param onClick The callback to be invoked when the button is clicked.
+ */
 @Composable
 fun ScrollToBottomButton(onClick: () -> Unit) {
     SmallFloatingActionButton(

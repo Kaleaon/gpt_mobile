@@ -47,6 +47,14 @@ import dev.chungjungsoo.gptmobile.presentation.common.SettingItem
 import dev.chungjungsoo.gptmobile.util.getPlatformSettingTitle
 import dev.chungjungsoo.gptmobile.util.pinnedExitUntilCollapsedScrollBehavior
 
+/**
+ * A screen for setting the parameters of a platform.
+ *
+ * @param modifier The modifier to be applied to the screen.
+ * @param apiType The type of the API.
+ * @param settingViewModel The view model for the settings screen.
+ * @param onNavigationClick The callback to be invoked when the navigation icon is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlatformSettingScreen(
@@ -199,6 +207,13 @@ fun PlatformSettingScreen(
     }
 }
 
+/**
+ * The top app bar for the platform settings screen.
+ *
+ * @param title The title of the app bar.
+ * @param onNavigationClick The callback to be invoked when the navigation icon is clicked.
+ * @param scrollBehavior The scroll behavior for the top app bar.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlatformTopAppBar(
@@ -231,6 +246,14 @@ fun PlatformTopAppBar(
     )
 }
 
+/**
+ * A switch preference with a container.
+ *
+ * @param title The title of the preference.
+ * @param icon The icon of the preference.
+ * @param isChecked Whether the preference is checked.
+ * @param onClick The callback to be invoked when the preference is clicked.
+ */
 @Composable
 fun PreferenceSwitchWithContainer(
     title: String,
